@@ -14,14 +14,14 @@ const AnimatedBox = styled(Animated.View)`
 `
 
 const Center = styled.View`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
   align-items: center;
 `;
 
-export default function App() {
-  let opacity = new Animated.Value(1)
+export default function Opacity() {
+    let opacity = new Animated.Value(1)
 
   const startAnimation = () => {
     Animated.timing(opacity, { toValue: 0, duration: 400 }).start()
