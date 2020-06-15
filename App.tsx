@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { Animated, TouchableWithoutFeedback } from "react-native";
+import { Animated, TouchableWithoutFeedback, Alert } from "react-native";
 import { StyledComponent } from "styled-components";
+import { Fade } from "./Fade";
 
-interface IAnimatedBoxProps {
-  opacity: number;
-}
-
-const AnimatedBox = styled(Animated.View)`
+const Box = styled.View`
   height: 100px;
   width: 100px;
   background-color: red;
@@ -21,16 +18,11 @@ const Center = styled.View`
 `;
 
 export default function App() {
-  let opacity = new Animated.Value(1)
-
-  const startAnimation = () => {
-    Animated.timing(opacity, { toValue: 0, duration: 400 }).start()
-  };
   return (
     <Center>
-      <TouchableWithoutFeedback onPress={startAnimation}>
-        <AnimatedBox style={{opacity: opacity}} />
-      </TouchableWithoutFeedback>
+      <Fade>
+        <Box/>
+      </Fade>
     </Center>
   );
 }
