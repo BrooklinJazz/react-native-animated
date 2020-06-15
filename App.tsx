@@ -1,19 +1,36 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import styled from "styled-components/native";
+import { Animated, TouchableWithoutFeedback } from "react-native";
+import { StyledComponent } from "styled-components";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+interface IAnimatedBoxProps {
+  opacity: number;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const AnimatedBox = styled(Animated.View)`
+  height: 100px;
+  width: 100px;
+  background-color: red;
+`
+
+const Center = styled.View`
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+`;
+
+export default function App() {
+  const [opacity, setOpacity] = useState(new Animated.Value(1));
+
+  const startAnimation = () => {
+    Animated.timing(opacity, { toValue: 0, duration: 400 }).start()
+  };
+  return (
+    <Center>
+      <TouchableWithoutFeedback onPress={startAnimation}>
+        <AnimatedBox style={{opacity: opacity}} />
+      </TouchableWithoutFeedback>
+    </Center>
+  );
+}
