@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
   Alert,
   Text,
+  ScrollView,
+  View,
 } from "react-native";
 import { StyledComponent } from "styled-components";
 import { Fade } from "./Fade";
 import { useLoopAnimation } from "./useLoopAnimation";
-
-
 
 const Center = styled.View`
   width: 100%;
@@ -20,14 +20,36 @@ const Center = styled.View`
   align-items: center;
 `;
 
+const Event = () => {
+  let animation = new Animated.Value(0);
 
-
-
-export default function App() {
+  let bgInterpolate = animation.interpolate({
+    inputRange: [0, 3000],
+    outputRange: ["rgb(255, 99, 71)", "rgb(71, 99, 255)"],
+  });
 
   return (
-    <Center>
+    <View style={{flex: 1}}>
+    <ScrollView
+      scrollEventThrottle={16}
+      onScroll={Animated.event([{
+        nativeEvent: {
+          contentOffset: {
+            y: animation
+          }
+        }
+      }])}
+    >
+      <Animated.View
+        style={{ backgroundColor: bgInterpolate, height: 3000 }}
+      />
+    </ScrollView>
+    </View>
+  );
+};
 
-    </Center>
+export default function App() {
+  return (
+      <Event />
   );
 }
