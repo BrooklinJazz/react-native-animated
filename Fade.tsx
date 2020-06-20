@@ -1,8 +1,8 @@
-import React, { ReactChildren } from "react";
+import React, { ReactChildren, ReactChild } from "react";
 import { Animated, TouchableWithoutFeedback } from "react-native";
 
 interface IProps {
-  children: ReactChildren;
+  children: any;
   onPress?: () => any;
   style?: {}
 }
