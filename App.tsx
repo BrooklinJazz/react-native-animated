@@ -20,36 +20,11 @@ const Center = styled.View`
   align-items: center;
 `;
 
-const Event = () => {
-  let animation = new Animated.Value(0);
-
-  let bgInterpolate = animation.interpolate({
-    inputRange: [0, 3000],
-    outputRange: ["rgb(255, 99, 71)", "rgb(71, 99, 255)"],
-  });
-
-  return (
-    <View style={{flex: 1}}>
-    <ScrollView
-      scrollEventThrottle={16}
-      onScroll={Animated.event([{
-        nativeEvent: {
-          contentOffset: {
-            y: animation
-          }
-        }
-      }])}
-    >
-      <Animated.View
-        style={{ backgroundColor: bgInterpolate, height: 3000 }}
-      />
-    </ScrollView>
-    </View>
-  );
-};
 
 export default function App() {
   return (
-      <Event />
+      <Center>
+        <Text>placeholder</Text>
+      </Center>
   );
 }
