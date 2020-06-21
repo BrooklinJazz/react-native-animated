@@ -13,5 +13,5 @@ export const useLoopAnimation = (animationFn: () => Animated.CompositeAnimation)
     useEffect(() => () => {
       stopped = true;
     });
-    return [loopAnimation];
+    return loopAnimation;
   };
