@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import { MathBarExample } from "./MathBarExample";
 
 const Center = styled.View`
   width: 100%;
@@ -8,11 +9,11 @@ const Center = styled.View`
   align-items: center;
 `;
 
-
 export default function App() {
 
   return (
     <Center>
+        <MathBarExample/>
     </Center>
   );
 }
