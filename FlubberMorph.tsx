@@ -1,14 +1,11 @@
 import React, { useEffect, useRef } from "react";
+import { Animated, useWindowDimensions, TouchableWithoutFeedback } from "react-native";
+import { interpolate } from "flubber";
 import SVG, { Path } from "react-native-svg";
-import SVGPath from "art/modes/svg/path";
-import { Tween } from "art/morph/path";
-import { Animated, TouchableWithoutFeedback, useWindowDimensions } from "react-native";
-export const SVGMorph = () => {
+export const FlubberMorph = () => {
   let animation = new Animated.Value(0);
-  const ref = useRef();
-  const startAnimation = () => {
-    Animated.timing(animation, { toValue: 1, duration: 1000 }).start();
-  };
+
+  const pathRef = useRef();
 
   const { height, width } = useWindowDimensions();
   const init = `${width / 2}, ${height / 2}`;
@@ -26,16 +23,16 @@ export const SVGMorph = () => {
     v -50
   `;
 
-  useEffect(() => {
-    const pathInterpolate = Tween(startPath, endPath);
-    let p = new SVGPath();
+  const startAnimation = () => {
+    Animated.timing(animation, { toValue: 1, duration: 1000 }).start();
+  };
 
+  useEffect(() => {
+    const pathInterpolate = interpolate(startPath, endPath, { maxSegmentLength: 1 });
     animation.addListener(({ value }) => {
-      pathInterpolate.tween(value);
-      pathInterpolate.applyToPath(p);
-      console.warn("ref");
-      ref?.current?.setNativeProps({
-        d: p.toSVG(),
+      const path = pathInterpolate(value);
+      pathRef?.current?.setNativeProps({
+        d: path
       });
     });
   }, []);
@@ -44,11 +41,11 @@ export const SVGMorph = () => {
     <TouchableWithoutFeedback onPress={startAnimation}>
       <SVG>
         <Path
-          ref={ref}
+          ref={pathRef}
           d={startPath}
           fill="purple"
           stroke="blue"
-          stroke-width="5" />
+          stroke-width="10" />
       </SVG>
     </TouchableWithoutFeedback>
   );

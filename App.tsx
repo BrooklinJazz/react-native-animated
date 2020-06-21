@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
-import { SVGMorph } from "./SVGMorph";
+import { FlubberMorph } from "./FlubberMorph";
+
 const Center = styled.View`
   width: 100%;
   height: 100%;
@@ -11,7 +12,7 @@ const Center = styled.View`
 export default function App() {
   return (
     <Center>
-      <SVGMorph />
+      <FlubberMorph />
     </Center>
   );
 }
