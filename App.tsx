@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components/native";
-import { FlubberMorph } from "./FlubberMorph";
+import { _99Cliff } from "./99Cliff";
 
 const Center = styled.View`
   width: 100%;
@@ -10,9 +10,5 @@ const Center = styled.View`
 `;
 
 export default function App() {
-  return (
-    <Center>
-      <FlubberMorph />
-    </Center>
-  );
+  return <_99Cliff />;
 }
