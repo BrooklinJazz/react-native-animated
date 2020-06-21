@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { Spring } from "./Spring";
+import { ParallelExample } from "./ParallelExample";
 
 const Center = styled.View`
   width: 100%;
@@ -12,7 +12,7 @@ const Center = styled.View`
 export default function App() {
   return (
     <Center>
-      <Spring />
+      <ParallelExample/>
     </Center>
   );
 }
