@@ -51,9 +51,9 @@ export const _99Cliff = () => {
           backgroundColor: colorInterpolate,
         }} />
       <CliffContainer>
-        <Text>Good</Text>
+        <Text>RED</Text>
         <View style={{ width: "100%", height: 1, backgroundColor: "black" }} />
-        <Text>BAD</Text>
+        <Text>GREEN</Text>
       </CliffContainer>
     </>
   );
