@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components/native";
-import { View } from "react-native";
-import { StaggerExample } from "./StaggerExample";
+import { CoinSpin } from "./CoinSpin";
 
 const Center = styled.View`
   width: 100%;
@@ -11,7 +10,9 @@ const Center = styled.View`
 `;
 
 export default function App() {
-  return <Center>
-    <StaggerExample/>
-  </Center>;
+  return (
+    <Center>
+      <CoinSpin />
+    </Center>
+  );
 }
